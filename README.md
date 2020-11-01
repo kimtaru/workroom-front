@@ -1,4 +1,4 @@
-# My toy project <Workroom>
+# My toy project 'Workroom'
 
 - Framework : React.js
 - Styling : styled-components / SCSS
