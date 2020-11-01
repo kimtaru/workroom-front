@@ -1,0 +1,11 @@
+//common.scss
+//모든 컴포넌트에 공통적으로 적용
+//개별 스타일링 소스 스코핑은 styled-components 사용함
+
+.App {
+}
+
+#UserLoginComp {
+  width: 20%;
+  border: 1px solid black;
+}
