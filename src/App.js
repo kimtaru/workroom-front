@@ -1,10 +1,11 @@
-import UserLoginComp from "./components/UserLoginComp";
-import "./styles/common.scss";
+import UserLoginComp from './components/UserLoginComp';
+import UserLoginPage from './pages/UserLoginPage';
+import './styles/common.scss';
 
 function App() {
   return (
     <div className="App">
-      <UserLoginComp />
+      <UserLoginPage />
     </div>
   );
 }
