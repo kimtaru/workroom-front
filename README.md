@@ -2,3 +2,6 @@
 
 - Framework : React.js
 - Styling : styled-components / SCSS
+- middleware : redux-saga
+- state management : redux
+
