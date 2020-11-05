@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const MenuItem = styled(Link)`
-  float: left;
-  margin-top: 25px;
-  margin-left: 50px;
+  color: black;
   text-decoration: none;
 `;
 const LogOut = styled(Link)`
@@ -16,5 +14,29 @@ const LogOut = styled(Link)`
 `;
 
 export default function NavComp() {
-  return <div></div>;
+  return (
+    <div id="NavComp">
+      <div className="photo"></div>
+      <div className="name">Kim Jinsol</div>
+      <div className="job">Marketing Director</div>
+      <div className="menuItem">
+        <MenuItem>Overview</MenuItem>
+      </div>
+      <div className="menuItem">
+        <MenuItem>Overview</MenuItem>
+      </div>
+      <div className="menuItem">
+        <MenuItem>Overview</MenuItem>
+      </div>
+      <div className="menuItem">
+        <MenuItem>Overview</MenuItem>
+      </div>
+      <div className="menuItem">
+        <MenuItem>Overview</MenuItem>
+      </div>
+      <div className="menuItem">
+        <MenuItem>Overview</MenuItem>
+      </div>
+    </div>
+  );
 }

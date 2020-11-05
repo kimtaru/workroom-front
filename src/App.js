@@ -6,6 +6,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import MainPage from './pages/MainPage';
 import UserLoginPage from './pages/UserLoginPage';
 import './styles/common.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { history } from './redux/create';
 function App() {
   return (

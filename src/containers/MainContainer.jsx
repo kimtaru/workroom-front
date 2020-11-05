@@ -5,12 +5,8 @@ import ContentComp from '../components/ContentComp';
 export default function MainContainer() {
   return (
     <div id="MainContainer">
-      <div id="NavComp">
-        <NavComp />
-      </div>
-      <div id="ContentComp">
-        <ContentComp />
-      </div>
+      <NavComp />
+      <ContentComp />
     </div>
   );
 }
