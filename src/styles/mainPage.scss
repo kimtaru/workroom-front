@@ -1,0 +1,17 @@
+#MainContainer {
+  display: flex;
+  #NavComp {
+    float: left;
+    width: 15%;
+    height: 100px;
+    background-color: gray;
+    min-width: 200px;
+  }
+
+  #ContentComp {
+    float: left;
+    width: 85%;
+    height: 100px;
+    background-color: lightblue;
+  }
+}
