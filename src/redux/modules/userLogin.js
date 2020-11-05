@@ -5,12 +5,26 @@ import {
   handleActions,
   createAction,
 } from 'redux-actions';
+import { push } from 'connected-react-router';
 
 const prefix = 'workroom-front/userLogin';
 
-const { check, fail } = createActions('CHECK', 'FAIL', {
-  prefix,
-});
+const {
+  checkAcct,
+  checkPwd,
+  start,
+  success,
+  fail,
+} = createActions(
+  'CHECK_ACCT',
+  'CHECK_PWD',
+  'START',
+  'SUCCESS',
+  'FAIL',
+  {
+    prefix,
+  },
+);
 
 const initialState = {
   token: null,
@@ -21,13 +35,24 @@ const initialState = {
 
 const reducer = handleActions(
   {
-    CHECK: (state, action) => ({
-      ...initialState,
+    CHECK_ACCT: (state, action) => ({
+      ...state,
       error: null,
       acctExistCheck: action.payload,
     }),
+    CHECK_PWD: (state, action) => ({
+      ...state,
+      pwdExactCheck: action.payload,
+    }),
+    START: (state) => ({
+      ...state,
+    }),
+    SUCCESS: (state, action) => ({
+      ...state,
+      token: action.payload,
+    }),
     FAIL: (state, action) => ({
-      ...initialState,
+      ...state,
       error: action.payload,
       acctExistCheck: true,
     }),
@@ -40,29 +65,48 @@ export default reducer;
 
 //SAGA
 
-const CHECK_ACCOUNT = `${prefix}/CHECK_ACCOUNT`;
+const AUTH_AND_LOGIN = `${prefix}/AUTH_AND_LOGIN`;
 
-export const checkAccount = createAction(
-  CHECK_ACCOUNT,
-  (account) => ({
+export const authAndLogin = createAction(
+  AUTH_AND_LOGIN,
+  (account, password) => ({
     account,
+    password,
   }),
 );
 
-function* startCheckAccountSaga(action) {
-  const { account } = action.payload;
+function* startAuthAndLoginSaga(action) {
+  const { account, password } = action.payload;
+
   try {
     const acctExistCheck = yield call(
-      UserLoginService.checkAcct,
+      UserLoginService.checkAccount,
+      //account 체크를 먼저 실행하고, 계정 유무에 따라 T/F를 반환한다.
       account,
     );
-    yield put(check(acctExistCheck));
-    return 'return 되었다.';
+    yield put(checkAcct(acctExistCheck));
+
+    if (acctExistCheck) {
+      yield put(start());
+      const token = yield call(
+        UserLoginService.userLogin,
+        account,
+        password,
+      );
+
+      if (token !== null) {
+        UserLoginService.saveToken(token);
+        yield put(success(token));
+        yield put(push('/'));
+      } else {
+        yield put(checkPwd(false));
+      }
+    }
   } catch (error) {
     yield put(fail(error));
   }
 }
 
 export function* userLoginSaga() {
-  yield takeLeading(CHECK_ACCOUNT, startCheckAccountSaga);
+  yield takeLeading(AUTH_AND_LOGIN, startAuthAndLoginSaga);
 }

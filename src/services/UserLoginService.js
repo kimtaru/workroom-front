@@ -13,11 +13,18 @@ export default class UserLoginService {
   static removeToken() {
     return localStorage.removeItem(LOCALSTORAGE_KEY);
   }
-  static checkAcct(account) {
-    if (account === 'kimtaru2@gmail.com') {
+  static checkAccount(account) {
+    if (account === 'admin') {
       return true;
     } else {
       return false;
+    }
+  }
+  static userLogin(account, password) {
+    if (account === 'admin' && password === 'vmfnsk91') {
+      return 'token';
+    } else {
+      return null;
     }
   }
 }

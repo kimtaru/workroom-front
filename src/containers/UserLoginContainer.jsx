@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import UserLoginComp from '../components/UserLoginComp';
-import { checkAccount } from '../redux/modules/userLogin';
+import { authAndLogin } from '../redux/modules/userLogin';
 
 export default function UserLoginContainer() {
   const {
@@ -9,15 +9,17 @@ export default function UserLoginContainer() {
     pwdExactCheck,
     error,
   } = useSelector((state) => state.userLogin);
-  //console.log('state가 잘 오나?', acctExistCheck);
-  //console.log('state가 잘 오나2?', pwdExactCheck);
+
   const dispatch = useDispatch();
-  const findAccount = useCallback(async (account) => {
-    dispatch(checkAccount(account));
-  });
+  const userLogin = useCallback(
+    async (account, password) => {
+      dispatch(authAndLogin(account, password));
+    },
+    [dispatch],
+  );
   return (
     <UserLoginComp
-      findAccount={findAccount}
+      userLogin={userLogin}
       acctExistCheck={acctExistCheck}
       pwdExactCheck={pwdExactCheck}
       error={error}

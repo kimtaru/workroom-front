@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -18,7 +18,6 @@ const Button = styled.button`
 function UserLoginComp({
   acctExistCheck,
   pwdExactCheck,
-  findAccount,
   userLogin,
 }) {
   const accountRef = useRef();
@@ -31,7 +30,6 @@ function UserLoginComp({
         type="text"
         placeholder="E-mail Account"
         ref={accountRef}
-        //onFocus={() => setAcctCheck(true)}
       />
       <div className="notice account">
         {acctExistCheck || 'wrong account'}
@@ -40,12 +38,11 @@ function UserLoginComp({
         type="password"
         placeholder="Password"
         ref={passwordRef}
-        //onFocus={() => setPwdCheck(true)}
       />
       <div className="notice password">
         {pwdExactCheck || 'wrong password'}
       </div>
-      <Button type="LightToDark" onClick={userLogin}>
+      <Button type="LightToDark" onClick={login}>
         LOGIN
       </Button>
       <Button onClick={helpTest}>JOIN</Button>
@@ -55,10 +52,10 @@ function UserLoginComp({
   );
 
   function helpTest() {}
-  function userLogin() {
+  function login() {
     const account = accountRef.current.value;
     const password = passwordRef.current.value;
-    findAccount(account);
+    userLogin(account, password);
   }
 }
 
