@@ -1,34 +1,38 @@
-#NavComp {
-  position: absolute;
-  //height: 100%;
-  background-color: lightgreen;
-  overflow-y: hidden;
-  padding: 30px 50px 30px 50px;
-  .photo {
-    margin-top: 20px;
-    width: 100px;
-    height: 100px;
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 16px;
+}
+
+.profile-div {
+  color: white;
+  //background-color: lightgray;
+  height: 250px;
+  padding-top: 30px;
+}
+
+.toggleArrow {
+  //border: 1px solid red;
+  width: 50px;
+}
+
+#MyProfile {
+  .userPhotoDiv {
+    margin: 0 auto 20px auto;
+    width: 120px;
+    height: 120px;
     background-color: white;
-    //border: 1px solid black;
     border-radius: 100%;
   }
-  .name {
-    //border: 1px solid black;
-    text-align: center;
-    margin-top: 10px;
-    font-size: 1.2em;
-  }
-  .job {
-    //border: 1px solid black;
-    text-align: center;
-    color: gray;
-    font-size: 0.7em;
-  }
-  .menuItem {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    //border: 1px solid black;
-    text-align: center;
+  .userNameDiv {
     color: black;
+    text-align: center;
+    font-weight: 500;
+  }
+  .userPositionDiv {
+    color: black;
+    text-align: center;
+    font-weight: 100;
+    font-size: 0.8em;
   }
 }
