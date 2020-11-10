@@ -2,17 +2,20 @@ import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useAuth from '../hooks/useAuth';
 import MyProfile from '../components/MyProfile';
-import MainContainer from '../containers/MainContainer';
+
 import { Dropdown, Layout, Menu } from 'antd';
 import {
   ArrowLeftOutlined,
   ArrowRightOutlined,
   DownOutlined,
+  ScheduleOutlined,
+  CarryOutOutlined,
 } from '@ant-design/icons';
 
 import '../styles/mainPage.scss';
-import styled from 'styled-components';
+
 import { authAndLogout } from '../redux/modules/userLogin';
+import SiderMenuItem from '../components/SiderMenuItem';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -32,10 +35,10 @@ export default function MainPage() {
 
   const myInfoClickEvent = ({ key }) => {
     switch (key) {
-      case '1':
+      case 'editInfo':
         alert('1');
         break;
-      case '2':
+      case 'logout':
         //alert('2');
         userLogout(); //로그아웃하기
         break;
@@ -45,10 +48,11 @@ export default function MainPage() {
   };
   const myInfo = (
     <Menu onClick={myInfoClickEvent}>
-      <Menu.Item key="1">개인정보 수정</Menu.Item>
-      <Menu.Item key="2">로그아웃</Menu.Item>
+      <Menu.Item key="editInfo">개인정보 수정</Menu.Item>
+      <Menu.Item key="logout">로그아웃</Menu.Item>
     </Menu>
-  );
+  ); // 상단 user 상태바 dropdown menu
+
   useAuth(true);
   return (
     <Layout>
@@ -58,6 +62,8 @@ export default function MainPage() {
         collapsed={collapsed}
         style={{
           backgroundColor: '#f5f5f5',
+          padding: 20,
+          paddingBottom: 60,
         }}
         //onCollapse={toggle}
       >
@@ -70,6 +76,42 @@ export default function MainPage() {
             />
           </div>
         )}
+        {/* menubar db에서 관리 나중에 map으로 출력 */}
+        <SiderMenuItem
+          collapsed={collapsed}
+          title="Schedule"
+          icon={
+            <ScheduleOutlined style={{ fontSize: 25 }} />
+          }
+        />
+        <SiderMenuItem
+          collapsed={collapsed}
+          title="Reservation"
+          icon={
+            <CarryOutOutlined style={{ fontSize: 25 }} />
+          }
+        />
+        <SiderMenuItem
+          collapsed={collapsed}
+          title="Reservation"
+          icon={
+            <CarryOutOutlined style={{ fontSize: 25 }} />
+          }
+        />
+        <SiderMenuItem
+          collapsed={collapsed}
+          title="Reservation"
+          icon={
+            <CarryOutOutlined style={{ fontSize: 25 }} />
+          }
+        />
+        <SiderMenuItem
+          collapsed={collapsed}
+          title="Reservation"
+          icon={
+            <CarryOutOutlined style={{ fontSize: 25 }} />
+          }
+        />
       </Sider>
       <Layout>
         <Header
@@ -100,7 +142,7 @@ export default function MainPage() {
             )}
             <div className="mini-photo" />
 
-            <Dropdown overlay={myInfo} style={{}}>
+            <Dropdown overlay={myInfo}>
               <a
                 className="MyInfo"
                 onClick={(e) => e.preventDefault()}
@@ -123,6 +165,7 @@ export default function MainPage() {
             backgroundColor: '#ffffff',
           }}
         ></Content>
+        <Footer>footer</Footer>
       </Layout>
     </Layout>
   );
