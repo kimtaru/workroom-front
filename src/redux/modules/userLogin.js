@@ -1,5 +1,10 @@
 import UserLoginService from '../../services/UserLoginService';
-import { put, call, takeLeading } from 'redux-saga/effects';
+import {
+  put,
+  call,
+  takeLeading,
+  select,
+} from 'redux-saga/effects';
 import {
   createActions,
   handleActions,
@@ -66,6 +71,7 @@ export default reducer;
 //SAGA
 
 const AUTH_AND_LOGIN = `${prefix}/AUTH_AND_LOGIN`;
+const AUTH_AND_LOGOUT = `${prefix}/AUTH_AND_LOGOUT`;
 
 export const authAndLogin = createAction(
   AUTH_AND_LOGIN,
@@ -74,6 +80,8 @@ export const authAndLogin = createAction(
     password,
   }),
 );
+
+export const authAndLogout = createAction(AUTH_AND_LOGOUT);
 
 function* startAuthAndLoginSaga(action) {
   const { account, password } = action.payload;
@@ -107,6 +115,23 @@ function* startAuthAndLoginSaga(action) {
   }
 }
 
+export function* startAuthAndLogoutSaga() {
+  const token = yield select(
+    (state) => state.userLogin.token,
+  );
+  console.log('토큰확인', token);
+  UserLoginService.removeToken();
+  yield put(success(null));
+  yield put(push('/login'));
+  try {
+    yield call(UserLoginService.userLogout, token);
+  } catch (error) {}
+}
+
 export function* userLoginSaga() {
   yield takeLeading(AUTH_AND_LOGIN, startAuthAndLoginSaga);
+  yield takeLeading(
+    AUTH_AND_LOGOUT,
+    startAuthAndLogoutSaga,
+  );
 }

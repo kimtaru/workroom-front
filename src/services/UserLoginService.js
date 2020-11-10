@@ -27,4 +27,7 @@ export default class UserLoginService {
       return null;
     }
   }
+  static userLogout(token) {
+    console.log(token);
+  }
 }
