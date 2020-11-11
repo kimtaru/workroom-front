@@ -93,6 +93,7 @@ export default function MainPage() {
           style={{
             padding: 0,
             backgroundColor: 'white',
+            minWidth: 1000,
           }}
         >
           <div className="header-div">
