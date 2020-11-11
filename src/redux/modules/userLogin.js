@@ -107,7 +107,7 @@ function* startAuthAndLoginSaga(action) {
 
       if (token !== null) {
         yield put(start());
-        yield delay(500);
+        yield delay(1000);
         UserLoginService.saveToken(token);
         yield put(success(token));
         yield put(push('/'));

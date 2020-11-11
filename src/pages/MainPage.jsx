@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useAuth from '../hooks/useAuth';
 import MyProfile from '../components/MyProfile';
+import Search from '../components/Search';
 
 import { Dropdown, Layout, Menu } from 'antd';
 import {
@@ -101,6 +102,7 @@ export default function MainPage() {
                   style={{
                     marginLeft: 10,
                     color: 'black',
+                    marginBottom: 20,
                   }}
                 />
               </div>
@@ -114,6 +116,7 @@ export default function MainPage() {
                 />
               </div>
             )}
+            <Search />
             <div className="mini-photo" />
 
             <Dropdown overlay={myInfo}>
