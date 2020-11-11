@@ -23,6 +23,7 @@ export default function create() {
     sider: {
       home: true,
       reservation: false,
+      test: false,
     },
   };
 

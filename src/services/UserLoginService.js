@@ -1,7 +1,7 @@
-import axios from 'axios';
+//import axios from 'axios';
 
 const LOCALSTORAGE_KEY = 'token';
-const API_URL = 'url';
+//const API_URL = 'url';
 
 export default class UserLoginService {
   static getToken() {

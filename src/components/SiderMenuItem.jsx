@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-const SiderMenu = styled.div``;
 const Icon = styled.div`
   width: 30px;
   display: inline-block;

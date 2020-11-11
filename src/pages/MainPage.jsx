@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import useAuth from '../hooks/useAuth';
 import MyProfile from '../components/MyProfile';
 
@@ -8,8 +8,6 @@ import {
   ArrowLeftOutlined,
   ArrowRightOutlined,
   DownOutlined,
-  ScheduleOutlined,
-  CarryOutOutlined,
 } from '@ant-design/icons';
 
 import '../styles/mainPage.scss';
@@ -17,10 +15,17 @@ import '../styles/mainPage.scss';
 import { authAndLogout } from '../redux/modules/userLogin';
 
 import SiderMenuItemContainer from '../containers/SiderMenuItemContainer';
+import HomeContainer from '../containers/HomeContainer';
+import ReservationContainer from '../containers/ReservationContainer';
+import TestContainer from '../containers/TestContainer';
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Sider } = Layout;
 
 export default function MainPage() {
+  const { home, reservation, test } = useSelector(
+    (state) => state.sider,
+  );
+
   const [collapsed, setCollapsed] = useState(false);
 
   //-----STATE로 대체할 것
@@ -113,6 +118,7 @@ export default function MainPage() {
 
             <Dropdown overlay={myInfo}>
               <a
+                href="#;"
                 className="MyInfo"
                 onClick={(e) => e.preventDefault()}
               >
@@ -126,14 +132,11 @@ export default function MainPage() {
             </Dropdown>
           </div>
         </Header>
-        <Content
-          style={{
-            //margin: '24px 16px',
-            padding: 24,
-            minHeight: 280,
-            backgroundColor: '#ffffff',
-          }}
-        ></Content>
+
+        {home && <HomeContainer />}
+        {reservation && <ReservationContainer />}
+        {test && <TestContainer />}
+
         <Footer>footer</Footer>
       </Layout>
     </Layout>
