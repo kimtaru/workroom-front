@@ -22,6 +22,11 @@ function UserLoginComp({
 }) {
   const accountRef = useRef();
   const passwordRef = useRef();
+  const enterKeyEvent = (e) => {
+    if (e.key === 'Enter') {
+      login();
+    }
+  };
   return (
     <div id="UserLoginComp">
       <h1>[ WORKROOM ]</h1>
@@ -38,6 +43,7 @@ function UserLoginComp({
         type="password"
         placeholder="Password"
         ref={passwordRef}
+        onKeyPress={enterKeyEvent}
       />
       <div className="notice password">
         {pwdExactCheck || 'wrong password'}
