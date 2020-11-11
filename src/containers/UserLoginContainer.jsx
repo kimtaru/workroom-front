@@ -8,6 +8,7 @@ export default function UserLoginContainer() {
     acctExistCheck,
     pwdExactCheck,
     error,
+    loading,
   } = useSelector((state) => state.userLogin);
 
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export default function UserLoginContainer() {
       userLogin={userLogin}
       acctExistCheck={acctExistCheck}
       pwdExactCheck={pwdExactCheck}
-      error={error}
+      loading={loading}
     />
   );
 }

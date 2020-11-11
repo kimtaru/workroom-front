@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
+import ShowSpinning from '../components/ShowSpinning';
 
 const Button = styled.button`
   background-color: ${(props) =>
@@ -19,6 +20,7 @@ function UserLoginComp({
   acctExistCheck,
   pwdExactCheck,
   userLogin,
+  loading,
 }) {
   const accountRef = useRef();
   const passwordRef = useRef();
@@ -29,6 +31,7 @@ function UserLoginComp({
   };
   return (
     <div id="UserLoginComp">
+      {loading && <ShowSpinning />}
       <h1>[ WORKROOM ]</h1>
 
       <input

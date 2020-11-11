@@ -4,6 +4,7 @@ import {
   call,
   takeLeading,
   select,
+  delay,
 } from 'redux-saga/effects';
 import {
   createActions,
@@ -36,6 +37,7 @@ const initialState = {
   pwdExactCheck: true,
   acctExistCheck: true,
   error: null,
+  loading: false,
 };
 
 const reducer = handleActions(
@@ -51,9 +53,11 @@ const reducer = handleActions(
     }),
     START: (state) => ({
       ...state,
+      loading: true,
     }),
     SUCCESS: (state, action) => ({
       ...state,
+      loading: false,
       token: action.payload,
     }),
     FAIL: (state, action) => ({
@@ -95,7 +99,6 @@ function* startAuthAndLoginSaga(action) {
     yield put(checkAcct(acctExistCheck));
 
     if (acctExistCheck) {
-      yield put(start());
       const token = yield call(
         UserLoginService.userLogin,
         account,
@@ -103,6 +106,8 @@ function* startAuthAndLoginSaga(action) {
       );
 
       if (token !== null) {
+        yield put(start());
+        yield delay(500);
         UserLoginService.saveToken(token);
         yield put(success(token));
         yield put(push('/'));
@@ -120,6 +125,7 @@ export function* startAuthAndLogoutSaga() {
     (state) => state.userLogin.token,
   );
   console.log('토큰확인', token);
+  yield put(start());
   UserLoginService.removeToken();
   yield put(success(null));
   yield put(push('/login'));

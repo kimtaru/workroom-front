@@ -1,5 +1,6 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { Layout, Spin } from 'antd';
+import ShowSpinning from '../components/ShowSpinning';
 
 export default function HomeContainer() {
   const { Content } = Layout;

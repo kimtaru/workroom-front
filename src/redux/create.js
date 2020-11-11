@@ -19,6 +19,7 @@ export default function create() {
       pwdExactCheck: true,
       acctExistCheck: true,
       error: null,
+      loading: false,
     },
     sider: {
       home: true,
