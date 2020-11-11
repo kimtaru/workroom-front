@@ -15,12 +15,14 @@ import {
 import '../styles/mainPage.scss';
 
 import { authAndLogout } from '../redux/modules/userLogin';
-import SiderMenuItem from '../components/SiderMenuItem';
+
+import SiderMenuItemContainer from '../containers/SiderMenuItemContainer';
 
 const { Header, Footer, Sider, Content } = Layout;
 
 export default function MainPage() {
   const [collapsed, setCollapsed] = useState(false);
+
   //-----STATE로 대체할 것
   const userName = 'Frank Kim';
   const userPosition = 'Web Developer';
@@ -77,41 +79,8 @@ export default function MainPage() {
           </div>
         )}
         {/* menubar db에서 관리 나중에 map으로 출력 */}
-        <SiderMenuItem
-          collapsed={collapsed}
-          title="Schedule"
-          icon={
-            <ScheduleOutlined style={{ fontSize: 25 }} />
-          }
-        />
-        <SiderMenuItem
-          collapsed={collapsed}
-          title="Reservation"
-          icon={
-            <CarryOutOutlined style={{ fontSize: 25 }} />
-          }
-        />
-        <SiderMenuItem
-          collapsed={collapsed}
-          title="Reservation"
-          icon={
-            <CarryOutOutlined style={{ fontSize: 25 }} />
-          }
-        />
-        <SiderMenuItem
-          collapsed={collapsed}
-          title="Reservation"
-          icon={
-            <CarryOutOutlined style={{ fontSize: 25 }} />
-          }
-        />
-        <SiderMenuItem
-          collapsed={collapsed}
-          title="Reservation"
-          icon={
-            <CarryOutOutlined style={{ fontSize: 25 }} />
-          }
-        />
+
+        <SiderMenuItemContainer collapsed={collapsed} />
       </Sider>
       <Layout>
         <Header

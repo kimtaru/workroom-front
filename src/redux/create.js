@@ -20,6 +20,10 @@ export default function create() {
       acctExistCheck: true,
       error: null,
     },
+    sider: {
+      home: true,
+      reservation: false,
+    },
   };
 
   const store = createStore(
