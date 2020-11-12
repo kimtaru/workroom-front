@@ -75,18 +75,20 @@ export default function MainPage() {
         }}
         //onCollapse={toggle}
       >
-        {/* 로고 디자인 파일 적용하기 */}
-        {collapsed ? null : (
-          <div className="profile-div">
-            <MyProfile
-              userName={userName}
-              userPosition={userPosition}
-            />
-          </div>
-        )}
-        {/* menubar db에서 관리 나중에 map으로 출력 */}
+        <div className="isFixed">
+          {/* 로고 디자인 파일 적용하기 */}
+          {collapsed ? null : (
+            <div className="profile-div">
+              <MyProfile
+                userName={userName}
+                userPosition={userPosition}
+              />
+            </div>
+          )}
+          {/* menubar db에서 관리 나중에 map으로 출력 */}
 
-        <SiderMenuItemContainer collapsed={collapsed} />
+          <SiderMenuItemContainer collapsed={collapsed} />
+        </div>
       </Sider>
       <Layout>
         <Header
