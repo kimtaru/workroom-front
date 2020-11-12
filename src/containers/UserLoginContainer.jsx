@@ -7,7 +7,6 @@ export default function UserLoginContainer() {
   const {
     acctExistCheck,
     pwdExactCheck,
-    error,
     loading,
   } = useSelector((state) => state.userLogin);
 

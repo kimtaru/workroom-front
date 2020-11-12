@@ -1,6 +1,5 @@
 import React from 'react';
-import { Layout, Spin } from 'antd';
-import ShowSpinning from '../components/ShowSpinning';
+import { Layout } from 'antd';
 
 export default function HomeContainer() {
   const { Content } = Layout;
@@ -10,6 +9,7 @@ export default function HomeContainer() {
         //margin: '24px 16px',
         padding: 24,
         minHeight: 280,
+
         backgroundColor: '#ffffff',
       }}
     >

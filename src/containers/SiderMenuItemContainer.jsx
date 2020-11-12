@@ -1,5 +1,9 @@
 import React, { useCallback } from 'react';
-import { CarryOutOutlined } from '@ant-design/icons';
+import {
+  CarryOutOutlined,
+  HomeOutlined,
+  FormOutlined,
+} from '@ant-design/icons';
 import SiderMenuItem from '../components/SiderMenuItem';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -27,20 +31,21 @@ export default function SiderMenuItemContainer({
   const actTest = useCallback(() => {
     dispatch(activeTest());
   }, [dispatch]);
+
   return (
     <div>
       <SiderMenuItem
         collapsed={collapsed}
         title="Home"
         active={home}
-        icon={<CarryOutOutlined style={{ fontSize: 25 }} />}
+        icon={<HomeOutlined style={{ fontSize: 25 }} />}
         clickEvent={actHome}
       />
       <SiderMenuItem
         collapsed={collapsed}
         title="Reservation"
         active={reservation}
-        icon={<CarryOutOutlined style={{ fontSize: 25 }} />}
+        icon={<FormOutlined style={{ fontSize: 25 }} />}
         clickEvent={actReservation}
       />
       <SiderMenuItem

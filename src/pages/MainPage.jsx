@@ -141,7 +141,16 @@ export default function MainPage() {
         {reservation && <ReservationContainer />}
         {test && <TestContainer />}
 
-        <Footer>footer</Footer>
+        <Footer>
+          <div>
+            <h4>Contact</h4>
+            <div>010-9507-0488</div>
+            <div>kimtaru2@gmail.com</div>
+            <div>
+              https://github.com/kimtaru/workroom-front.git
+            </div>
+          </div>
+        </Footer>
       </Layout>
     </Layout>
   );

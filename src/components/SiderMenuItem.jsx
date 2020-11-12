@@ -4,7 +4,9 @@ import styled from 'styled-components';
 const Icon = styled.div`
   width: 30px;
   display: inline-block;
-  margin-left: 15px;
+  margin-top: ${(props) => props.collapsed && '20px'};
+  margin-left: ${(props) =>
+    props.collapsed ? '5px' : '15px'};
   text-align: center;
   color: ${(props) => props.active && 'blue'};
   font-weight: ${(props) => props.active && '500'};
@@ -27,7 +29,9 @@ export default function SiderMenuItem({
 }) {
   return (
     <div id="SiderMenuItem" onClick={clickEvent}>
-      <Icon active={active}>{icon}</Icon>
+      <Icon active={active} collapsed={collapsed}>
+        {icon}
+      </Icon>
       {collapsed ? (
         ''
       ) : (
