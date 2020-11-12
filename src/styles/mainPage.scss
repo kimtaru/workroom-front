@@ -112,8 +112,99 @@
   height: 300px;
   width: 280px;
 }
-.isFixed {
+.toFixed {
   position: fixed;
   padding-right: 11px;
   width: 170px;
+}
+#Issue {
+  background-color: lightgrey;
+  border-radius: 12px;
+  width: 95%;
+  height: 260px;
+  position: relative;
+
+  .attendance-list {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 0;
+    top: 5px;
+  }
+  .throwerPhoto {
+    //border: 1px solid black;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: white;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    //margin: 0 auto 0 auto;
+  }
+  .throwerName {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 90px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .throwerDept {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    text-align: center;
+    top: 117px;
+    font-size: 13px;
+  }
+  .agenda {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    text-align: center;
+    top: 145px;
+    font-size: 13px;
+  }
+  .detail-issue {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 186px;
+    color: blue;
+    text-align: center;
+
+    cursor: pointer;
+  }
+  .detail-issue:hover {
+    font-weight: 500;
+  }
+  .throwDate {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 10px;
+    top: 210px;
+    text-align: center;
+  }
+  .join {
+    position: absolute;
+    right: 10px;
+    top: 226px;
+    cursor: pointer;
+  }
+  .join:hover {
+    font-weight: 500;
+  }
+  .priority {
+    position: absolute;
+    font-size: 14px;
+    left: 10px;
+    top: 226px;
+    color: red;
+    font-weight: 400;
+  }
 }

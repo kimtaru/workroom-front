@@ -75,7 +75,7 @@ export default function MainPage() {
         }}
         //onCollapse={toggle}
       >
-        <div className="isFixed">
+        <div className="toFixed">
           {/* 로고 디자인 파일 적용하기 */}
           {collapsed ? null : (
             <div className="profile-div">
