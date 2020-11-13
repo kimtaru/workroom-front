@@ -4,6 +4,7 @@ import IssueContainer from '../containers/IssueContainer';
 
 export default function HomeContainer() {
   const { Content } = Layout;
+
   return (
     <Content
       style={{

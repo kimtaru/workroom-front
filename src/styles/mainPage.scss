@@ -208,3 +208,16 @@
 #Issue:hover {
   box-shadow: 1px 1px 8px #2575ed;
 }
+
+#IssueContainer {
+  padding-left: 3px;
+  .title {
+    font-size: 26px;
+    //border: 1px solid red;
+  }
+  .radio {
+    position: absolute;
+    top: 9px;
+    right: 15px;
+  }
+}

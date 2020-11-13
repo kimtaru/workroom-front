@@ -28,6 +28,7 @@ export default function MainPage() {
   );
 
   const [collapsed, setCollapsed] = useState(false);
+  const [borderWeight, setBorderWeight] = useState('7px');
 
   //-----STATE로 대체할 것
   const userName = 'Frank Kim';
@@ -35,6 +36,11 @@ export default function MainPage() {
   //---------------------
   const toggle = () => {
     setCollapsed(!collapsed);
+    if (collapsed) {
+      setBorderWeight('7px');
+    } else {
+      setBorderWeight('3px');
+    }
   };
   const dispatch = useDispatch();
   const userLogout = useCallback(() => {
@@ -72,7 +78,7 @@ export default function MainPage() {
           backgroundColor: '#ffffff',
           padding: 20,
           paddingBottom: 60,
-          borderRight: '5px solid #4386F1',
+          borderRight: borderWeight + ' solid #E6E4E4',
         }}
         //onCollapse={toggle}
       >
