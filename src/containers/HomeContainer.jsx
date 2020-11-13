@@ -9,7 +9,7 @@ export default function HomeContainer() {
       style={{
         padding: 24,
         minHeight: 280,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#FAFAFA',
       }}
     >
       <Row>

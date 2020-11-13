@@ -1,8 +1,21 @@
 import React from 'react';
-import { Col } from 'antd';
-import { TeamOutlined } from '@ant-design/icons';
+import { Col, Avatar, Tooltip } from 'antd';
 
-export default function Issue() {
+export default function Issue({
+  name,
+  dept,
+  agenda,
+  date,
+  attendent,
+}) {
+  //box-shadow: 1px 1px 4px #f2095a;
+  //#Issue:hover {
+  //border: 3px solid #09caf2;
+  //}
+  function testPlay() {
+    alert('haha');
+  }
+  const attdList = attendent.split(',');
   return (
     <Col
       style={{
@@ -11,25 +24,36 @@ export default function Issue() {
       }}
       span="6"
     >
-      <div id="Issue">
-        <div className="attendance-list">
-          <TeamOutlined
-            style={{
-              fontSize: 23,
-            }}
-          />
-        </div>
+      <div id="Issue" onClick={testPlay}>
         <div className="throwerPhoto" />
-        <div className="throwerName">David</div>
-        <div className="throwerDept">Online Marketing</div>
-        <div className="agenda">
-          "To report about marketing's team performance
-          2021"
+        <div className="throwerName">{name}</div>
+        <div className="throwerDept">{dept}</div>
+        <div className="agenda">{agenda}</div>
+        <div className="throwDate">{date}</div>
+        <div className="attendent-list">
+          <Avatar.Group
+            maxCount={3}
+            size="small"
+            maxPopoverPlacement="none"
+            maxStyle={{
+              color: 'white',
+              backgroundColor: 'orange',
+            }}
+          >
+            {attdList.map((attd, idx) => {
+              return (
+                <Tooltip
+                  key={idx}
+                  title={attd}
+                  placement="top"
+                >
+                  <Avatar size="small">{attd}</Avatar>
+                  {/* 이미지 렌더링 해야함 */}
+                </Tooltip>
+              );
+            })}
+          </Avatar.Group>
         </div>
-        <div className="detail-issue">DETAIL</div>
-        <div className="throwDate">2020-11-12</div>
-        <div className="join">JOIN</div>
-        <div className="priority">routine</div>
       </div>
     </Col>
   );

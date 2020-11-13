@@ -69,9 +69,10 @@ export default function MainPage() {
         collapsible
         collapsed={collapsed}
         style={{
-          backgroundColor: '#f5f5f5',
+          backgroundColor: '#ffffff',
           padding: 20,
           paddingBottom: 60,
+          borderRight: '5px solid #4386F1',
         }}
         //onCollapse={toggle}
       >
@@ -94,7 +95,7 @@ export default function MainPage() {
         <Header
           style={{
             padding: 0,
-            backgroundColor: 'white',
+            backgroundColor: '#FAFAFA',
             minWidth: 1000,
           }}
         >
@@ -143,7 +144,11 @@ export default function MainPage() {
         {reservation && <ReservationContainer />}
         {test && <TestContainer />}
 
-        <Footer>
+        <Footer
+          style={{
+            backgroundColor: '#E6E4E4',
+          }}
+        >
           <div>
             <h4>Contact</h4>
             <div>010-9507-0488</div>
