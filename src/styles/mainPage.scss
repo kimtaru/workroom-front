@@ -118,6 +118,7 @@
   padding-right: 11px;
   width: 170px;
 }
+.compDiv,
 #Issue {
   background-color: #ffffff;
   border-radius: 12px;
@@ -203,13 +204,19 @@
     transform: translateX(-50%);
     top: 220px;
   }
+  .graph {
+    background-color: yellow;
+  }
+  .checkList {
+    background-color: blue;
+  }
 }
 
 #Issue:hover {
   box-shadow: 1px 1px 8px #2575ed;
 }
 
-#IssueContainer {
+#Container {
   padding-left: 3px;
   .title {
     font-size: 26px;

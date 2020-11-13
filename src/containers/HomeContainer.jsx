@@ -1,6 +1,7 @@
 import React from 'react';
-import { Layout, Row, Col } from 'antd';
+import { Layout, Row } from 'antd';
 import IssueContainer from '../containers/IssueContainer';
+import TodoContainer from '../containers/TodoContainer';
 
 export default function HomeContainer() {
   const { Content } = Layout;
@@ -15,14 +16,7 @@ export default function HomeContainer() {
     >
       <Row>
         <IssueContainer />
-        <Col
-          flex="1 250px"
-          style={{
-            border: '1px solid black',
-          }}
-        >
-          개발중(today's list..)
-        </Col>
+        <TodoContainer />
       </Row>
     </Content>
   );

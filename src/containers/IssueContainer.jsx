@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Row, Col, Select, Radio } from 'antd';
+import { Row, Col, Radio } from 'antd';
 import Issue from '../components/Issue';
 
 export default function IssueContainer() {
   //------state 받아오는 곳
   const userNumber = '110110';
   //----------------------
-  const { Option } = Select;
+
   const [condition, setCondition] = useState('all');
   // 카드는 4장까지 출력
   const issues = [
@@ -45,7 +45,7 @@ export default function IssueContainer() {
   };
   return (
     <Col flex="3 200px">
-      <div id="IssueContainer">
+      <div id="Container">
         <span className="title">ISSUES</span>
         <span className="radio">
           <Radio.Group
@@ -60,10 +60,6 @@ export default function IssueContainer() {
       </div>
       <Row>
         {issues.map((issue, idx) => {
-          console.log(
-            idx,
-            issue.attendent.indexOf(userNumber),
-          );
           switch (condition) {
             case 'all':
               return (
@@ -93,6 +89,8 @@ export default function IssueContainer() {
                 );
               }
               break;
+            default:
+              return null;
           }
         })}
       </Row>
