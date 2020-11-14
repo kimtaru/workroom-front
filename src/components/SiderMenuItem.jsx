@@ -8,7 +8,7 @@ const Icon = styled.div`
   margin-left: ${(props) =>
     props.collapsed ? '5px' : '15px'};
   text-align: center;
-  color: ${(props) => props.active && 'blue'};
+  color: ${(props) => props.active && '#337AFF'};
   font-weight: ${(props) => props.active && '500'};
 `;
 const Title = styled.div`
@@ -17,7 +17,7 @@ const Title = styled.div`
   position: absolute;
   margin-left: 10px;
   margin-top: 2px;
-  color: ${(props) => props.active && 'blue'};
+  color: ${(props) => props.active && '#337AFF'};
   font-weight: ${(props) => props.active && '500'};
 `;
 export default function SiderMenuItem({

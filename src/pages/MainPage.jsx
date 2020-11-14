@@ -1,169 +1,38 @@
-import React, { useCallback, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import useAuth from '../hooks/useAuth';
-import MyProfile from '../components/MyProfile';
-import Search from '../components/Search';
-
-import { Dropdown, Layout, Menu } from 'antd';
-import {
-  ArrowLeftOutlined,
-  ArrowRightOutlined,
-  DownOutlined,
-} from '@ant-design/icons';
 
 import '../styles/mainPage.scss';
+import { Layout } from 'antd';
 
-import { authAndLogout } from '../redux/modules/userLogin';
-
-import SiderMenuItemContainer from '../containers/SiderMenuItemContainer';
 import HomeContainer from '../containers/HomeContainer';
 import ReservationContainer from '../containers/ReservationContainer';
 import TestContainer from '../containers/TestContainer';
-
-const { Header, Footer, Sider } = Layout;
+import SiderContainer from '../containers/SiderContainer';
+import HeaderContainer from '../containers/HeaderContainer';
+import FooterContainer from '../containers/FooterContainer';
 
 export default function MainPage() {
   const { home, reservation, test } = useSelector(
     (state) => state.sider,
   );
 
-  const [collapsed, setCollapsed] = useState(false);
-  const [borderWeight, setBorderWeight] = useState('7px');
-
-  //-----STATE로 대체할 것
-  const userName = 'Frank Kim';
-  const userPosition = 'Web Developer';
-  //---------------------
-  const toggle = () => {
-    setCollapsed(!collapsed);
-    if (collapsed) {
-      setBorderWeight('7px');
-    } else {
-      setBorderWeight('3px');
-    }
-  };
-  const dispatch = useDispatch();
-  const userLogout = useCallback(() => {
-    dispatch(authAndLogout());
-  }, [dispatch]);
-
-  const myInfoClickEvent = ({ key }) => {
-    switch (key) {
-      case 'editInfo':
-        alert('1');
-        break;
-      case 'logout':
-        //alert('2');
-        userLogout(); //로그아웃하기
-        break;
-      default:
-        break;
-    }
-  };
-  const myInfo = (
-    <Menu onClick={myInfoClickEvent}>
-      <Menu.Item key="editInfo">개인정보 수정</Menu.Item>
-      <Menu.Item key="logout">로그아웃</Menu.Item>
-    </Menu>
-  ); // 상단 user 상태바 dropdown menu
-
   useAuth(true);
   return (
-    <Layout>
-      <Sider
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
-        style={{
-          backgroundColor: '#ffffff',
-          padding: 20,
-          paddingBottom: 60,
-          borderRight: borderWeight + ' solid #E6E4E4',
-        }}
-        //onCollapse={toggle}
-      >
-        <div className="toFixed">
-          {/* 로고 디자인 파일 적용하기 */}
-          {collapsed ? null : (
-            <div className="profile-div">
-              <MyProfile
-                userName={userName}
-                userPosition={userPosition}
-              />
-            </div>
-          )}
-          {/* menubar db에서 관리 나중에 map으로 출력 */}
-
-          <SiderMenuItemContainer collapsed={collapsed} />
-        </div>
-      </Sider>
+    <Layout
+      style={{
+        margin: '0 auto 0 auto',
+        maxWidth: 1680,
+      }}
+    >
+      <SiderContainer />
       <Layout>
-        <Header
-          style={{
-            padding: 0,
-            backgroundColor: '#FAFAFA',
-            minWidth: 1000,
-          }}
-        >
-          <div className="header-div">
-            {collapsed ? (
-              <div className="toggleArrow" onClick={toggle}>
-                <ArrowRightOutlined
-                  style={{
-                    marginLeft: 10,
-                    color: 'black',
-                    marginBottom: 20,
-                  }}
-                />
-              </div>
-            ) : (
-              <div className="toggleArrow" onClick={toggle}>
-                <ArrowLeftOutlined
-                  style={{
-                    marginLeft: 10,
-                    color: 'black',
-                  }}
-                />
-              </div>
-            )}
-            <Search />
-            <div className="mini-photo" />
-
-            <Dropdown overlay={myInfo}>
-              <a
-                href="#;"
-                className="MyInfo"
-                onClick={(e) => e.preventDefault()}
-              >
-                {userName}
-                <DownOutlined
-                  style={{
-                    marginLeft: 5,
-                  }}
-                />
-              </a>
-            </Dropdown>
-          </div>
-        </Header>
-
+        <HeaderContainer />
+        {/* content */}
         {home && <HomeContainer />}
         {reservation && <ReservationContainer />}
         {test && <TestContainer />}
-
-        <Footer
-          style={{
-            backgroundColor: '#E6E4E4',
-          }}
-        >
-          <div>
-            <h4>Contact</h4>
-            <div>010-9507-0488</div>
-            <div>kimtaru2@gmail.com</div>
-            <div>
-              https://github.com/kimtaru/workroom-front.git
-            </div>
-          </div>
-        </Footer>
+        <FooterContainer />
       </Layout>
     </Layout>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import { Col } from 'antd';
 import TodayList from '../components/TodayList';
 
-export default function TodoContainer() {
+export default function ShowProgressContainer() {
   return (
     <Col
       flex="1 250px"

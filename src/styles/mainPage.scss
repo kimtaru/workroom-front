@@ -65,7 +65,7 @@
   height: 50px;
 }
 .MyInfo {
-  color: blue;
+  color: #337aff;
   //float: right;
   position: absolute;
   right: 50px;
@@ -97,7 +97,7 @@
 
 #SiderMenuItem:hover {
   //background-color: black;
-  color: blue;
+  color: #337aff;
   font-weight: 500;
   //transition: 0.3s ease;
 }
@@ -167,19 +167,7 @@
     top: 145px;
     font-size: 13px;
   }
-  .detail-issue {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    top: 186px;
-    color: blue;
-    text-align: center;
 
-    cursor: pointer;
-  }
-  .detail-issue:hover {
-    font-weight: 500;
-  }
   .throwDate {
     position: absolute;
     left: 50%;
@@ -204,12 +192,6 @@
     transform: translateX(-50%);
     top: 220px;
   }
-  .graph {
-    background-color: yellow;
-  }
-  .checkList {
-    background-color: blue;
-  }
 }
 
 #Issue:hover {
@@ -226,5 +208,23 @@
     position: absolute;
     top: 9px;
     right: 15px;
+  }
+}
+
+#ShowProgress {
+  min-width: 400px;
+  .graph {
+    margin-top: 50px;
+    .circleProgress {
+      text-align: center;
+    }
+  }
+  .checkList {
+    padding-top: 50px;
+    padding-right: 20px;
+    font-size: 14px;
+    li {
+      //border: 1px solid black;
+    }
   }
 }

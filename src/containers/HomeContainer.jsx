@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Row } from 'antd';
 import IssueContainer from '../containers/IssueContainer';
-import TodoContainer from '../containers/TodoContainer';
+import TodayListContainer from '../containers/TodayListContainer';
 
 export default function HomeContainer() {
   const { Content } = Layout;
@@ -16,7 +16,7 @@ export default function HomeContainer() {
     >
       <Row>
         <IssueContainer />
-        <TodoContainer />
+        <TodayListContainer />
       </Row>
     </Content>
   );
