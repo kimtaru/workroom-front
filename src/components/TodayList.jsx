@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
 import { Row, Col, Progress, Checkbox } from 'antd';
-export default function TodayList() {
-  const [checked, setChecked] = useState(false);
+import Todo from './Todo';
+import { useEffect } from 'react';
+export default function TodayList({
+  todos,
+  loading,
+  error,
+  getTodos,
+}) {
   const [percent, setPercent] = useState(0);
-  const onChange = (e) => {
-    console.log(e.target.checked);
-    setChecked(e.target.checked);
-  };
+
+  useEffect(() => {
+    getTodos();
+  }, [getTodos]);
+
+  useEffect(() => {
+    let cnt = 0;
+    for (let i = 0; i < todos.length; i++) {
+      if (todos[i].complete === 1) {
+        cnt++;
+      }
+    }
+    const x = (100 / todos.length) * cnt;
+    setPercent(Math.floor(x));
+  }, [todos]);
 
   return (
     <div className="compDiv" id="ShowProgress">
@@ -26,38 +43,16 @@ export default function TodayList() {
           <div className="checkList">
             <ul>
               {/* li component화 props를 받는 */}
-              <li>
-                미팅 어레인지
-                <Checkbox
-                  checked={checked}
-                  onChange={onChange}
-                  style={{ float: 'right' }}
-                />
-              </li>
-              <li>
-                시안 컨펌{' '}
-                <Checkbox style={{ float: 'right' }} />
-              </li>
-              <li>
-                결산보고{' '}
-                <Checkbox style={{ float: 'right' }} />
-              </li>
-              <li>
-                회식 장소 예약{' '}
-                <Checkbox style={{ float: 'right' }} />
-              </li>
-              <li>
-                제안서 작성{' '}
-                <Checkbox style={{ float: 'right' }} />
-              </li>
-              <li>
-                업무 인수인계{' '}
-                <Checkbox style={{ float: 'right' }} />
-              </li>
-              <li>
-                지출결의{' '}
-                <Checkbox style={{ float: 'right' }} />
-              </li>
+              {todos.map((todo, idx) => {
+                return (
+                  <Todo
+                    todo={todo.todo}
+                    complete={todo.complete}
+                    key={idx}
+                  />
+                );
+              })}
+
               {/* 리스트 7개가 맥스 그 이후로 페이징 처리  */}
             </ul>
           </div>
