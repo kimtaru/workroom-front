@@ -12,6 +12,7 @@ import {
   takeLeading,
   takeEvery,
 } from 'redux-saga/effects';
+import { useSelector } from 'react-redux';
 
 const prefix = 'workroom-front/content';
 
@@ -53,10 +54,30 @@ const reducer = handleActions(
 export default reducer;
 
 const START_GET_TODOS = `${prefix}/START_GET_TODOS`;
+const START_MODIFY_TODOS = `${prefix}/START_MODIFY_TODOS`;
 
 export const startGetTodos = createAction(
   `${START_GET_TODOS}`,
 );
+
+export const startModifyTodos = createAction(
+  `${START_MODIFY_TODOS}`,
+);
+
+function* startModifyTodosSaga(action) {
+  try {
+    yield put(start());
+    const idx = action.payload.todoId;
+    const todos = yield select(
+      (state) => state.content.todos,
+    );
+    todos[idx].complete = action.payload.reversedCheck;
+    yield put(success(todos));
+    //console.log(todos);
+  } catch (error) {
+    yield put(fail(error));
+  }
+}
 
 function* startGetTodosSaga() {
   try {
@@ -77,4 +98,5 @@ function* startGetTodosSaga() {
 
 export function* contentSaga() {
   yield takeEvery(START_GET_TODOS, startGetTodosSaga);
+  yield takeEvery(START_MODIFY_TODOS, startModifyTodosSaga);
 }

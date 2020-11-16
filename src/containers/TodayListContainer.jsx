@@ -3,7 +3,10 @@ import { Col } from 'antd';
 import TodayList from '../components/TodayList';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { startGetTodos } from '../redux/modules/content';
+import {
+  startGetTodos,
+  startModifyTodos,
+} from '../redux/modules/content';
 
 export default function TodayListContainer() {
   const dateInstance = new Date();
@@ -24,7 +27,6 @@ export default function TodayListContainer() {
     padding-left: 5px;
     font-size: 15px;
   `;
-  //console.log(today.getDate());
 
   const { todos, loading, error } = useSelector(
     (state) => state.content,
@@ -35,6 +37,13 @@ export default function TodayListContainer() {
   const getTodos = useCallback(() => {
     dispatch(startGetTodos());
   }, [dispatch]);
+
+  const modifyTodos = useCallback(
+    (idx, checked) => {
+      dispatch(startModifyTodos(idx, checked));
+    },
+    [dispatch],
+  );
 
   return (
     <Col
@@ -59,6 +68,7 @@ export default function TodayListContainer() {
           loading={loading}
           error={error}
           getTodos={getTodos}
+          modifyTodos={modifyTodos}
         />
       </div>
     </Col>

@@ -7,6 +7,7 @@ export default function TodayList({
   loading,
   error,
   getTodos,
+  modifyTodos,
 }) {
   const [percent, setPercent] = useState(0);
 
@@ -17,13 +18,13 @@ export default function TodayList({
   useEffect(() => {
     let cnt = 0;
     for (let i = 0; i < todos.length; i++) {
-      if (todos[i].complete === 1) {
+      if (todos[i].complete === true) {
         cnt++;
       }
     }
     const x = (100 / todos.length) * cnt;
     setPercent(Math.floor(x));
-  }, [todos]);
+  });
 
   return (
     <div className="compDiv" id="ShowProgress">
@@ -46,8 +47,10 @@ export default function TodayList({
               {todos.map((todo, idx) => {
                 return (
                   <Todo
+                    modifyTodos={modifyTodos}
                     todo={todo.todo}
                     complete={todo.complete}
+                    todoId={idx}
                     key={idx}
                   />
                 );

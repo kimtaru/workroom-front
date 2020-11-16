@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Checkbox } from 'antd';
 
-export default function Todo({ todo, complete }) {
-  const [checked, setChecked] = useState(0);
+export default function Todo({
+  todo,
+  complete,
+  modifyTodos,
+  todoId,
+}) {
+  const [checked, setChecked] = useState(false);
 
   const onChange = (e) => {
+    const reversedCheck = e.target.checked;
     setChecked(e.target.checked);
-    //서버를 가서 값을 수정함
+    modifyTodos({ todoId, reversedCheck });
   };
 
   useEffect(() => {
     setChecked(complete);
-  }, [complete]);
+  }, []);
 
   return (
     <li>
