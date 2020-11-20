@@ -1,4 +1,4 @@
-export default class HomeService {
+export default class ContentService {
   static getTodayTodoList(token) {
     //---서버 아직 없는 관계로 test object
     const dataList = [
