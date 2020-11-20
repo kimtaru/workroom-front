@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import {
   startGetTodos,
   startModifyTodos,
-} from '../redux/modules/content';
+} from '../redux/modules/todos';
 
 export default function TodayListContainer() {
   const dateInstance = new Date();
@@ -29,7 +29,7 @@ export default function TodayListContainer() {
   `;
 
   const { todos, loading, error } = useSelector(
-    (state) => state.content,
+    (state) => state.todos,
   );
 
   const dispatch = useDispatch();

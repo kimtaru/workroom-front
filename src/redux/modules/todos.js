@@ -14,7 +14,7 @@ import {
 } from 'redux-saga/effects';
 import { useSelector } from 'react-redux';
 
-const prefix = 'workroom-front/content';
+const prefix = 'workroom-front/todos';
 
 const { start, success, fail } = createActions(
   'START',
@@ -69,7 +69,7 @@ function* startModifyTodosSaga(action) {
     yield put(start());
     const idx = action.payload.todoId;
     const todos = yield select(
-      (state) => state.content.todos,
+      (state) => state.todos.todos,
     );
     todos[idx].complete = action.payload.reversedCheck;
     yield put(success(todos));
@@ -96,7 +96,7 @@ function* startGetTodosSaga() {
   }
 }
 
-export function* contentSaga() {
+export function* todosSaga() {
   yield takeEvery(START_GET_TODOS, startGetTodosSaga);
   yield takeEvery(START_MODIFY_TODOS, startModifyTodosSaga);
 }
