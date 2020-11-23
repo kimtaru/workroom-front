@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = '/api/issues';
+const API_URL = '/api/v1/issues';
 
 export default class SampleService {
   static async getSample(token) {
